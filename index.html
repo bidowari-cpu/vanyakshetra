@@ -160,7 +160,7 @@
     position: fixed;
     top: 90px; /* Adjust this so it sits exactly under your Nav */
     width: 100%;
-    background: rgba(10, 10, 10, 0.95);
+    background: rgb(27, 27, 27);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass);
     display: flex;
@@ -202,17 +202,27 @@
     }
 }
 #vanya-clock {
-    font-size: 1.5rem; /* Increase this number to make it bigger */
-    font-weight: 700;  /* Makes the numbers bolder */
+    font-size: 1.5rem; 
+    font-weight: 700;
     font-variant-numeric: tabular-nums; 
-    color: var(--neon-green);
-    transition: all 0.5s ease;
-    letter-spacing: 1px;
+    /* CHANGED: Base color is now Vajra Cyan */
+    color: #ff006a; 
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+    transition: all 0.8s ease; 
+    letter-spacing: 2px;
 }
 
 .brahma-muhurta {
+    /* SACRED HOUR: Solar Gold */
     color: #ffd700 !important;
-    text-shadow: 0 0 15px #ffd700, 0 0 30px #b8860b !important;
+    text-shadow: 0 0 20px #ffd700, 0 0 40px #b8860b !important;
+    animation: clock-glow 2s infinite alternate;
+}
+
+/* Adds a breathing glow during the 4 AM Vigil */
+@keyframes clock-glow {
+    from { text-shadow: 0 0 10px #ffd700; }
+    to { text-shadow: 0 0 25px #ffd700, 0 0 45px #ff8c00; }
 }
 .mini-bar {
     width: 50px;
@@ -281,6 +291,87 @@ body::after {
     cursor: pointer;
     transition: all 0.3s ease;
 }
+/* --- VAHINI SPECIFIC COLORS --- */
+.vajra-text { color: #00e5ff; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
+.aranya-text { color: #0c9b07; text-shadow: 0 0 10px rgba(0, 255, 157, 0.5); }
+.karma-text { color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, 0.5); }
+.dhvani-text { color: #bc13fe; text-shadow: 0 0 10px rgba(188, 19, 254, 0.5); }
+
+/* --- CARD HOVER TRANSFORMATIONS --- */
+.card.vajra-card:hover { border-color: #00e5ff; box-shadow: 0 0 20px rgba(0, 229, 255, 0.2); }
+.card.aranya-card:hover { border-color: #0c9b07; box-shadow: 0 0 20px rgba(0, 255, 157, 0.2); }
+.card.karma-card:hover { border-color: #ffcc00; box-shadow: 0 0 20px rgba(255, 204, 0, 0.2); }
+.card.dhvani-card:hover { border-color: #bc13fe; box-shadow: 0 0 20px rgba(188, 19, 254, 0.2); }
+
+/* --- DEFAULT CARD REFINEMENT --- */
+.card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(20, 20, 20, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scanning Bar */
+.scanner-line {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 255, 157, 0.5);
+    box-shadow: 0 0 15px var(--neon-green);
+    top: -10%;
+    left: 0;
+    z-index: 6;
+    animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+    0% { top: -10%; }
+    100% { top: 110%; }
+}
+
+/* Targeting Reticle (Follows Mouse) */
+.reticle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--neon-green);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 15;
+    transform: translate(-50%, -50%);
+    display: none; /* Shown via JS */
+}
+
+.reticle::before, .reticle::after {
+    content: '';
+    position: absolute;
+    background: var(--neon-green);
+}
+
+.reticle::before { width: 100%; height: 1px; top: 50%; left: 0; }
+.reticle::after { width: 1px; height: 100%; left: 50%; top: 0; }
+
+/* --- MISSION TIMELINE STYLES --- */
+.timeline-container { 
+    width: 100%; max-width: 900px; margin-top: 40px; 
+    text-align: left; /* Ensures text stays left-aligned in the center section */
+}
+.current-phase-display { 
+    padding: 15px; border: 1px solid var(--neon-cyan); 
+    margin-bottom: 30px; font-family: 'Orbitron'; font-size: 0.8rem;
+    background: rgba(0, 229, 255, 0.05); text-align: center;
+}
+.timeline-track { position: relative; border-left: 2px solid #222; padding-left: 30px; margin-left: 20px; }
+.time-node { position: relative; margin-bottom: 40px; opacity: 0.3; transition: 0.5s; }
+.time-node.active-now { opacity: 1; transform: translateX(10px); }
+.time-label { font-family: 'Orbitron'; font-size: 0.7rem; color: #555; margin-bottom: 5px; }
+.activity-box { background: rgba(20,20,20,0.8); padding: 20px; border: 1px solid #333; border-radius: 4px; }
+.time-node.active-now .activity-box { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 229, 255, 0.1); }
+.zone-tag { font-size: 0.6rem; color: var(--neon-cyan); margin-top: 10px; display: block; letter-spacing: 1px; font-weight: bold; }
+.time-node::before {
+    content: ""; position: absolute; left: -37px; top: 10px;
+    width: 12px; height: 12px; border-radius: 50%; background: #222; border: 2px solid #000;
+}
+.time-node.active-now::before { background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
    </style>
 </head>
 <body>
@@ -291,10 +382,12 @@ body::after {
             <li onclick="showPage('citadel')" id="nav-citadel" class="active-link">CITADEL</li>
             <li onclick="showPage('vahinis')" id="nav-vahinis">VAHINIS</li>
             <li onclick="showPage('protocols')" id="nav-protocols">PROTOCOLS</li>
+            <li onclick="showPage('schedule')" id="nav-schedule">SCHEDULE</li>
             <li onclick="showPage('map')" id="nav-map">MAP</li>
             <li onclick="showPage('log')" id="nav-log">MISSION LOG</li>
             <li onclick="showPage('portal')" id="nav-portal">GUARDIAN PORTAL</li>
             <li onclick="showPage('visitor')" id="nav-visitor">GET IN TOUCH</li>
+            <li onclick="showPage('economy')" id="nav-economy">VANYA COIN</li>
         </ul>
     </nav>
 <div class="status-bar">
@@ -317,6 +410,9 @@ body::after {
         <span class="value">12 AQI</span>
         <div class="mini-bar"><div class="fill" style="width: 98%; background: var(--neon-cyan);"></div></div>
     </div>
+    <div class="status-item">
+        <span class="label">VAULT:</span> 
+        <span class="value" id="vanya-token">⟇ 2,080</span></div>
 </div>
     <section id="citadel" class="active">
         <img src="logo.png" alt="Vanyakshetra Logo" class="citadel-logo">
@@ -332,11 +428,30 @@ body::after {
     <section id="vahinis">
         <h2 class="neon-text">THE 4 VAHINIS</h2>
         <div class="grid-layout">
-            <div class="card"><h3>VAJRA | বজ্ৰ</h3><p>Motto: THE SILENT SIGNAL, THE SOVEREIGN MIND.</p><p>Objective: To build a decentralized, off-grid communication network independent of global surveillance.</p></div>
-            <div class="card"><h3>ARANYA | অৰণ্য</h3><p>Motto: ROOTED IN EARTH, ARMED WITH LIFE.</p><p>Objective: To restore the native biosphere and engineer self-sustaining food and medicinal supplies</p></div>
-            <div class="card"><h3>KARMA | কৰ্ম</h3><p>Motto: ENERGY IS ACTION, MATTER IS CLAY.</p><p>Objective: To achieve 100% energy independence and fabricate the Citadel’s physical hardware.</p></div>
-            <div class="card"><h3>DHVANI | ধ্বনি</h3><p>Motto: THE WORD IS VIBRATION, THE VIBRATION IS POWER.</p><p>Objective: To master the arts, music, and dance as tools for cultural preservation and communal harmony.</p></div>
-        </div>
+    <div class="card vajra-card">
+        <h3 class="vajra-text">VAJRA | বজ্ৰ</h3>
+        <p>Motto: THE SILENT SIGNAL, THE SOVEREIGN MIND.</p>
+        <p>Objective: To build a decentralized, off-grid communication network independent of global surveillance.</p>
+    </div>
+
+    <div class="card aranya-card">
+        <h3 class="aranya-text">ARANYA | অৰণ্য</h3>
+        <p>Motto: ROOTED IN EARTH, ARMED WITH LIFE.</p>
+        <p>Objective: To restore the native biosphere and engineer self-sustaining food and medicinal supplies.</p>
+    </div>
+
+    <div class="card karma-card">
+        <h3 class="karma-text">KARMA | কৰ্ম</h3>
+        <p>Motto: ENERGY IS ACTION, MATTER IS CLAY.</p>
+        <p>Objective: To achieve 100% energy independence and fabricate the Citadel’s physical hardware.</p>
+    </div>
+
+    <div class="card dhvani-card">
+        <h3 class="dhvani-text">DHVANI | ধ্বনি</h3>
+        <p>Motto: THE WORD IS VIBRATION, THE VIBRATION IS POWER.</p>
+        <p>Objective: To master the arts, music, and dance as tools for cultural preservation and communal harmony.</p>
+    </div>
+</div>
     </section>
 
     <section id="protocols">
@@ -358,9 +473,63 @@ The Action: Stress is the enemy. Through synchronized breathing and acoustic (so
 The Action: Every step of our journey is recorded in a secure, digital ledger. This ensures that the 100 Founders can see exactly how the mission is progressing, keeping our history transparent and unchangeable.</p></div>
         </div>
     </section>
+<section id="schedule">
+    <h2 class="neon-text">[ MISSION_TIMELINE: 24H_CYCLE ]</h2>
+    <div class="timeline-container">
+        <div class="current-phase-display">
+            CURRENT_STATUS: <span id="current-activity-name" class="neon-green">INITIALIZING...</span>
+        </div>
 
+        <div class="timeline-track">
+            <div class="time-node" data-start="0400" data-end="0900">
+                <div class="time-label">04:00 - 09:00</div>
+                <div class="activity-box">
+                    <h3 class="aranya-text">THE VIGIL & PREP</h3>
+                    <p>Meditation, Yoga, Taekwondo/PT. Rising during Brahma Muhurta to sync the mind.</p>
+                    <span class="zone-tag">ZONE: ARANYA CIRCLE / CANTEEN</span>
+                </div>
+            </div>
+
+            <div class="time-node" data-start="0900" data-end="1400">
+                <div class="time-label">09:00 - 14:00</div>
+                <div class="activity-box">
+                    <h3 class="vajra-text">ACADEMIC PHASE</h3>
+                    <p>Cadets and teachers assemble at the Academic Block. Regular school hours are conducted here, delivering the official academic syllabus through traditional classroom instruction.</p>
+                    <span class="zone-tag">ZONE: ACADEMIC BLOCK</span>
+                </div>
+            </div>
+
+            <div class="time-node" data-start="1500" data-end="1700">
+                <div class="time-label">15:00 - 17:00</div>
+                <div class="activity-box">
+                    <h3 class="karma-text">VAHINI SKILLS</h3>
+                    <p>Active Vahini training: Vajra (Comms), Aranya (Bio), Karma (Energy), or Dhvani (Acoustics).</p>
+                    <span class="zone-tag">ZONE: THE 4 NODES</span>
+                </div>
+            </div>
+
+            <div class="time-node" data-start="1700" data-end="2030">
+                <div class="time-label">17:00 - 20:30</div>
+                <div class="activity-box">
+                    <h3 class="dhvani-text">COMMONS & STUDY</h3>
+                    <p>Leisure, Dinner (Akasha Ghast Protocol), and evening self-study hours.</p>
+                    <span class="zone-tag">ZONE: LIVING PODS / COMMONS</span>
+                </div>
+            </div>
+
+            <div class="time-node" data-start="2030" data-end="2100">
+                <div class="time-label">20:30 - 21:00</div>
+                <div class="activity-box">
+                    <h3 class="neon-cyan">NIGHT MEET</h3>
+                    <p>Commander briefing and data upload to the Founder's Ledger via the Vajra Mesh.</p>
+                    <span class="zone-tag">ZONE: VAJRA NODE</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     <section id="map">
-        <h2 class="neon-text">STRATEGIC CAMPUS</h2>
+        <h2 class="neon-text">VANYAKSHETRA CONCEPT CAMPUS</h2>
         <div class="map-frame neon-border">
             <img src="vanyakshetra-map.png" alt="Map" class="map-img">
         </div>
@@ -408,9 +577,19 @@ The Action: Every step of our journey is recorded in a secure, digital ledger. T
             </div>
         </div>
     </section>
+
+    <section id="economy">
+        <h2 class="neon-text">VANYA-CREDIT PROTOCOL</h2>
+        <p style="color: #888; margin-bottom: 20px;">[ CHARACTER > STAKE ]</p>
+        <div class="grid-layout">
+            <div class="card karma-card"><h3>EARN ⟇</h3><p>• 04:00 AM Vigil: +50 ⟇<br>• Tree Planting: +20 ⟇</p></div>
+            <div class="card vajra-card"><h3>REDEEM ⟇</h3><p>• Tool Access<br>• Archive Unlocks</p></div>
+        </div>
+    </section>
+
     <section id="visitor">
         <div class="portal-box" style="border-top: 3px solid var(--neon-cyan);">
-            <h2 class="neon-text" style="margin-bottom: 1rem;">SECURE_COMM_LINK</h2>
+            <h2 class="neon-text" style="margin-bottom: 1rem;">SECURE_CONNECTION</h2>
             <p style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">[ ENCRYPTED CHANNEL OPEN FOR EXTERNAL INQUIRY ]</p>
             
             <form id="visitor-form">
@@ -428,6 +607,38 @@ The Action: Every step of our journey is recorded in a secure, digital ledger. T
             </form>
         </div>
     </section>
+
+        <section id="map">
+    <h2 class="neon-text">[ SATELLITE_FEED: 26.14°N 91.73°E ]</h2>
+    <p style="color: var(--neon-green); font-family: 'Courier New'; font-size: 0.7rem; margin-bottom: 20px;">
+        STATUS: LINK_ESTABLISHED // SOURCE: CITADEL_ORBIT_01
+    </p>
+
+    <div class="satellite-view" onmousemove="moveReticle(event)" onmouseenter="showReticle()" onmouseleave="hideReticle()">
+        <div class="scanner-line"></div>
+        <div class="satellite-grid"></div>
+        <div class="reticle" id="map-reticle"></div>
+        
+        <img src="vanyakshetra-map.jpg" class="satellite-img">
+
+        <div class="hotspot" id="node-vajra" style="top: 32%; right: 12%;">
+            <div class="info-popup">
+                <span style="color:var(--neon-green)">[VAJRA_NODE]</span><br>
+                SIG_STRENGTH: 98%<br>
+                COORDS: 26.1N / 91.7E
+            </div>
+        </div>
+
+        <div class="hotspot" id="node-aranya" style="top: 58%; right: 38%;">
+            <div class="info-popup">
+                <span style="color:var(--neon-green)">[ARANYA_ZONE]</span><br>
+                BIOMASS: INCREASING<br>
+                O2_OUT: 420kg/hr
+            </div>
+        </div>
+    </div>
+</section>
+
    <script>
     const missionText = "A MESSAGE TO THE 100 FOUNDERS: The world is loud, but the Banyan is silent. We do not build for the next year; we build for the next century. Our character is our shield. Our innovation is our weapon. Stand firm. The Citadel is watching.";
     let charIndex = 0;
@@ -524,14 +735,56 @@ The Action: Every step of our journey is recorded in a secure, digital ledger. T
     }
 
     // --- 5. INITIALIZE EVERYTHING ---
-    window.onload = () => {
-        showPage('citadel');
-        // Start Clock
-        setInterval(updateVanyaClock, 1000);
-        updateVanyaClock();
-        // Start Sensors
-        setInterval(updateSensors, 5000);
-    };
+   window.onload = () => {
+    showPage('citadel');
+    setInterval(updateVanyaClock, 1000);
+    updateVanyaClock();
+    
+    // NEW: Schedule update
+    setInterval(updateLiveSchedule, 60000); // Check every minute
+    updateLiveSchedule();
+
+    setInterval(updateSensors, 5000);
+};
+    function moveReticle(e) {
+    const reticle = document.getElementById('map-reticle');
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    reticle.style.left = x + 'px';
+    reticle.style.top = y + 'px';
+}
+
+function showReticle() {
+    document.getElementById('map-reticle').style.display = 'block';
+}
+
+function hideReticle() {
+    document.getElementById('map-reticle').style.display = 'none';
+}
+
+function updateLiveSchedule() {
+    const now = new Date();
+    // Converts time to 24h format number (e.g., 14:30 becomes 1430)
+    const currentTime = now.getHours() * 100 + now.getMinutes();
+    let currentTask = "SYSTEM_STANDBY (STNDBY)";
+
+    document.querySelectorAll('.time-node').forEach(node => {
+        const start = parseInt(node.dataset.start);
+        const end = parseInt(node.dataset.end);
+
+        if (currentTime >= start && currentTime < end) {
+            node.classList.add('active-now');
+            currentTask = node.querySelector('h3').innerText;
+        } else {
+            node.classList.remove('active-now');
+        }
+    });
+
+    const display = document.getElementById('current-activity-name');
+    if(display) display.innerText = currentTask;
+}
 </script>
 </body>
 </html>
