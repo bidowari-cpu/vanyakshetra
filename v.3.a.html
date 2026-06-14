@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanyakshetra-Where Nature Inspires Excellence</title>
+    <!-- Premium Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for UI Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --forest-dark: #002e1b;
+            --forest-light: #004d2e;
+            --gold: #b38f43;
+            --gold-light: #d4af37;
+            --cream-bg: #faf8f2;
+            --white: #ffffff;
+            --text-dark: #222222;
+            --text-light: #555555;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* --- TOP UTILITY BAR --- */
+        .utility-bar {
+            background-color: var(--white);
+            border-bottom: 1px solid #eeeeee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 8%;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .utility-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .utility-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .utility-links a:hover {
+            color: var(--gold);
+        }
+
+        .utility-links i {
+            color: var(--gold);
+            margin-right: 5px;
+        }
+
+        .utility-socials {
+            display: flex;
+            gap: 15px;
+        }
+
+        .utility-socials a {
+            color: var(--text-dark);
+            background: #f0f0f0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 0.7rem;
+            transition: var(--transition);
+        }
+
+        .utility-socials a:hover {
+            background: var(--forest-dark);
+            color: var(--white);
+        }
+
+        /* --- NAVIGATION MANIFEST --- */
+        header {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .vector-logo-leaf {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, var(--gold) 20%, var(--forest-dark) 60%);
+            border-radius: 50% 0 50% 50%;
+            transform: rotate(-45deg);
+        }
+
+        .brand-text h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--forest-dark);
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .brand-text p {
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--forest-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* --- HERO BANNER (INTEGRATED WITH BACKGROUND.PNG) --- */
+        .hero-section {
+            position: relative;
+            /* Smoothly darkens the left 50% of background.png so text remains highly readable */
+            background: linear-gradient(to right, rgba(0, 46, 27, 0.85) 0%, rgba(0, 46, 27, 0.4) 50%, rgba(0, 46, 27, 0) 100%), 
+                        url('background.png') no-repeat center center;
+            background-size: cover;
+            padding: 100px 8% 140px;
+            display: flex;
+            align-items: center;
+            min-height: 650px;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 55%;
+            z-index: 2;
+            color: var(--white);
+        }
+
+        .hero-tagline {
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.2rem;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .hero-title span {
+            color: var(--gold-light);
+        }
+
+        .hero-description {
+            font-size: 0.95rem;
+            color: #e0ece6;
+            margin-bottom: 35px;
+            max-width: 90%;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .btn-dark {
+            background-color: var(--gold);
+            color: var(--white);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-dark:hover {
+            background-color: var(--white);
+            color: var(--forest-dark);
+            border-color: var(--white);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold-light);
+            color: var(--white);
+            border-color: var(--gold-light);
+        }
+
+        /* --- FEATURE BELT BAR --- */
+        .feature-belt {
+            background: linear-gradient(to right, var(--forest-dark), var(--forest-light));
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .belt-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            flex: 1;
+            position: relative;
+        }
+
+        .belt-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            background-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .belt-item i {
+            font-size: 1.8rem;
+            color: var(--gold-light);
+            margin-bottom: 12px;
+        }
+
+        .belt-item span {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            max-width: 80%;
+        }
+
+        /* --- GENERAL SECTION CONTAINERS --- */
+        .section-container {
+            padding: 80px 8%;
+        }
+
+        .section-title-block {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title-block h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--forest-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title-block p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+
+        .section-title-block::after {
+            content: '♦';
+            display: block;
+            color: var(--gold);
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+
+        /* --- ABOUT SECTION SHAPE --- */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-graphic-identity {
+            text-align: center;
+            background-color: var(--cream-bg);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px dashed var(--gold);
+        }
+
+        .about-graphic-identity .logo-big {
+            font-size: 5rem;
+            color: var(--forest-dark);
+            margin-bottom: 15px;
+        }
+
+        .about-graphic-identity p {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-dark);
+        }
+
+        .about-text-content p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        /* --- INTEGRATED VIDEO TOUR PORTAL --- */
+        .campus-tour-section {
+            background-color: var(--cream-bg);
+        }
+
+        .campus-tour-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 46, 27, 0.15);
+            overflow: hidden;
+            border: 4px solid var(--gold);
+            background: #000;
+        }
+
+        .video-player-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Perfect 16:9 Cinema Aspect Ratio */
+            height: 0;
+        }
+
+        .video-player-wrapper iframe, 
+        .thumbnail-card-trigger {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .thumbnail-card-trigger {
+            background: linear-gradient(rgba(0,46,27,0.1), rgba(0,46,27,0.3)), 
+                        url('campus tour video.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .thumbnail-card-trigger:hover {
+            filter: brightness(0.95);
+        }
+
+        /* Custom Dynamic Play Button Graphic UI */
+        .play-btn-circle {
+            width: 85px;
+            height: 85px;
+            background: radial-gradient(circle, #ffffff 30%, #f4f4f4 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(214, 175, 55, 0.8), 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+        }
+
+        .play-triangle {
+            width: 0;
+            height: 0;
+            border-top: 16px solid transparent;
+            border-bottom: 16px solid transparent;
+            border-left: 26px solid var(--forest-dark);
+            margin-left: 6px;
+        }
+
+        .thumbnail-card-trigger:hover .play-btn-circle {
+            transform: scale(1.12);
+            box-shadow: 0 0 40px rgba(214, 175, 55, 1), 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* --- WHY VANYAKSHETRA PILLARS --- */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+
+        .pillar-card {
+            background: var(--white);
+            border: 1px solid #eae1cc;
+            border-radius: 6px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(179,143,67,0.15);
+            border-color: var(--gold);
+        }
+
+        .pillar-icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--forest-dark);
+            color: var(--gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin: 0 auto 20px;
+        }
+
+        .pillar-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: var(--forest-dark);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+            min-height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pillar-card p {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* --- STATISTICS BAR --- */
+        .stats-banner {
+            background-color: var(--forest-dark);
+            color: var(--white);
+            padding: 40px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .stat-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stat-box i {
+            font-size: 2.2rem;
+            color: var(--gold-light);
+            opacity: 0.8;
+        }
+
+        .stat-data h4 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+        }
+
+        .stat-data p {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #bbbbbb;
+        }
+
+        /* --- TRI-COLUMN INFORMATION PIPELINE --- */
+        .tri-column-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr 1.1fr;
+            gap: 45px;
+        }
+
+        .column-header {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--forest-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .column-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 42%;
+            width: 16%;
+            height: 1px;
+            background-color: var(--gold);
+        }
+
+        .news-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .date-badge {
+            background-color: var(--forest-dark);
+            color: var(--white);
+            min-width: 50px;
+            height: 54px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .date-badge .day { font-size: 1.1rem; line-height: 1; }
+        .date-badge .month { font-size: 0.6rem; text-transform: uppercase; color: var(--gold-light); }
+
+        .news-details h5 { font-size: 0.8rem; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+        .news-details p { font-size: 0.75rem; color: var(--text-light); line-height: 1.4; margin-bottom: 4px; }
+        .news-details a { font-size: 0.7rem; font-weight: 700; color: var(--forest-light); text-decoration: none; }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .gallery-tile {
+            width: 100%;
+            height: 95px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 3px;
+            transition: var(--transition);
+            filter: grayscale(15%);
+        }
+
+        .gallery-tile:hover { transform: scale(1.03); filter: grayscale(0%); }
+
+        .btn-center-wrapper { text-align: center; margin-top: 15px; }
+        .btn-sm-outline {
+            padding: 8px 20px;
+            font-size: 0.65rem;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            background: transparent;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-sm-outline:hover { background: var(--gold); color: var(--white); }
+
+        /* --- DUAL CURVED ANCHOR FOOTER --- */
+        footer {
+            background: linear-gradient(145deg, #001f12 0%, #002e1b 100%);
+            color: #dddddd;
+            padding: 60px 8% 20px;
+            font-size: 0.8rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gold);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.8fr 1.2fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h4 { font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--white); letter-spacing: 1px; margin-bottom: 4px; }
+        .footer-brand p.motto { font-size: 0.55rem; text-transform: uppercase; color: var(--gold-light); letter-spacing: 1.5px; margin-bottom: 15px; }
+        .footer-brand p.desc { font-size: 0.75rem; color: #b3c7be; line-height: 1.6; margin-bottom: 20px; }
+
+        .footer-socials { display: flex; gap: 12px; }
+        .footer-socials a {
+            color: var(--white); border: 1px solid rgba(255,255,255,0.2); width: 30px; height: 30px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
+            text-decoration: none; transition: var(--transition);
+        }
+        .footer-socials a:hover { background: var(--gold); border-color: var(--gold); transform: translateY(-2px); }
+
+        .footer-links h4, .footer-contact h4, .footer-subscribe h4 {
+            font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--white); margin-bottom: 20px; letter-spacing: 0.5px; text-transform: uppercase;
+        }
+
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 10px; }
+        .footer-links ul li a { color: #b3c7be; text-decoration: none; font-size: 0.75rem; transition: var(--transition); display: inline-block; }
+        .footer-links ul li a:hover { color: var(--gold-light); transform: translateX(4px); }
+        .footer-links ul li a::before { content: '›'; margin-right: 8px; color: var(--gold); font-size: 0.9rem; }
+
+        .footer-contact-item { display: flex; gap: 12px; margin-bottom: 15px; font-size: 0.75rem; color: #b3c7be; }
+        .footer-contact-item i { color: var(--gold-light); margin-top: 3px; }
+
+        .footer-subscribe p { font-size: 0.75rem; color: #b3c7be; margin-bottom: 15px; line-height: 1.5; }
+        .input-group { display: flex; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; padding: 4px; }
+        .input-group input { background: transparent; border: none; padding: 10px; color: var(--white); font-size: 0.75rem; width: 100%; font-family: 'Montserrat', sans-serif; }
+        .input-group input:focus { outline: none; }
+        .input-group button { background: transparent; border: none; color: var(--gold-light); padding: 0 12px; cursor: pointer; transition: var(--transition); }
+        .input-group button:hover { color: var(--white); }
+
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; margin-top: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: #8fa89d; }
+
+        /* --- RESPONSIVE OPTIMIZATION LAYOUTS --- */
+        @media (max-width: 1024px) {
+            .tri-column-grid { grid-template-columns: 1fr; gap: 40px; }
+            .pillars-grid { grid-template-columns: repeat(3, 1fr); }
+            .about-layout { grid-template-columns: 1fr; }
+            .hero-content { max-width: 80%; }
+        }
+
+        @media (max-width: 768px) {
+            .utility-bar { display: none; }
+            header { flex-direction: column; gap: 15px; padding: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 12px; }
+            .hero-section { min-height: 480px; padding: 60px 20px; background-position: left center; text-align: center; }
+            .hero-content { max-width: 100%; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-buttons { justify-content: center; }
+            .feature-belt { flex-direction: column; gap: 25px; }
+            .belt-item:not(:last-child)::after { display: none; }
+            .pillars-grid { grid-template-columns: 1fr; }
+            .stats-banner { flex-direction: column; gap: 25px; text-align: center; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- UTILITY STRIP -->
+    <div class="utility-bar">
+        <div class="utility-links">
+            <a href="#"><i class="fa-solid fa-user-graduate"></i> Student Login</a>
+            <a href="#"><i class="fa-solid fa-chalkboard-user"></i> Teacher Login</a>
+            <a href="#"><i class="fa-solid fa-users-viewfinder"></i> Parent Portal</a>
+        </div>
+        <div class="utility-socials">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <!-- CORE HEADER & NAVIGATION -->
+    <header>
+        <div class="brand-container">
+            <div class="vector-logo-leaf"></div>
+            <div class="brand-text">
+                <h1>VANYAKSHETRA</h1>
+                <p>Where Nature Inspires Excellence</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Academics</a></li>
+                <li><a href="#">Admissions</a></li>
+                <li><a href="#">Campus Life</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">4 Vahinis</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ENVIRONMENTAL BACKGROUND HERO BANNER -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <p class="hero-tagline">Learn • Grow • Lead</p>
+            <h2 class="hero-title">Nurturing Minds,<br><span>Shaping Futures</span></h2>
+            <p class="hero-description">At Vanyakshetra, we blend high-caliber modern academic rigor with eco-sustainability framework metrics to empower future architectural and community pioneers.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-dark">Discover Our Vision</a>
+                <a href="#" class="btn btn-outline">Admissions 2031-32</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5-PILLAR CORE HORIZON BELT -->
+    <div class="feature-belt">
+        <div class="belt-item"><i class="fa-solid fa-heart-pulse"></i><span>Nurturing Values</span></div>
+        <div class="belt-item"><i class="fa-solid fa-book-open"></i><span>Excellence In Education</span></div>
+        <div class="belt-item"><i class="fa-solid fa-tree"></i><span>Inspired By Nature</span></div>
+        <div class="belt-item"><i class="fa-solid fa-children"></i><span>Holistic Development</span></div>
+        <div class="belt-item"><i class="fa-solid fa-earth-asia"></i><span>Global Perspective</span></div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section class="section-container">
+        <div class="section-title-block">
+            <h2>About Vanyakshetra</h2>
+        </div>
+        <div class="about-layout">
+            <div class="about-graphic-identity">
+                <div class="logo-big"><i class="fa-solid fa-seedling"></i></div>
+                <p>LEARN • GROW • LEAD</p>
+            </div>
+            <div class="about-text-content">
+                <p>Vanyakshetra is more than just a school - it is a dedicated ecosystem of conscious scholars, designers, and guides working collaboratively toward excellence, personal integrity and ecological synchronization. Our focus remains deeply rooted in preparing students to command high-impact leadership positions across global spaces.</p>
+                <a href="#" class="btn btn-dark" style="background-color: var(--forest-dark); border-color:var(--forest-dark); padding: 10px 24px;">Know More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTEGRATED CAMPUS TOUR VIDEO HUB -->
+    <section class="section-container campus-tour-section">
+        <div class="section-title-block">
+            <h2>Explore The Sustainable Future (Concept Design)</h2>
+            <p>Take an immersive journey into our architectural layout and state-of-the-art facilities</p>
+        </div>
+
+        <div class="campus-tour-container">
+            <div class="video-player-wrapper" id="video-root">
+                <!-- Cover Preview Thumbnail Trigger Layout -->
+                <div class="thumbnail-card-trigger" onclick="injectCampusMedia()">
+                    <div class="play-btn-circle">
+                        <div class="play-triangle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY VANYAKSHETRA DECK -->
+    <section class="section-container">
+        <div class="section-title-block">
+            <h2>Why Vanyakshetra?</h2>
+        </div>
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-icon-circle"><i class="fa-solid fa-users"></i></div>
+                <h3>Expert Faculty</h3>
+                <p>Experienced and dedicated mentors guiding every structural layout phase.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon-circle"><i class="fa-solid fa-building-columns"></i></div>
+                <h3>Modern Infrastructure</h3>
+                <p>Smart specialized labs, massive libraries and clean environmental design components.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon-circle"><i class="fa-solid fa-child-reaching"></i></div>
+                <h3>Holistic Development</h3>
+                <p>Academics, competitive athletic systems, arts and integrated practical life skills.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon-circle"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Value Based Education</h3>
+                <p>Building flawless ethical foundations, strong internal character and accountability matrix metrics.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon-circle"><i class="fa-solid fa-leaf"></i></div>
+                <h3>Secure & Green Campus</h3>
+                <p>Fully secure, high-tech, carbon-neutral facility built to inspire healthy cognitive processing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATISTICS BANNER -->
+    <div class="stats-banner">
+        <div class="stat-box"><i class="fa-solid fa-users-line"></i><div class="stat-data"><h4>100+</h4><p>Vanyavirs</p></div></div>
+        <div class="stat-box"><i class="fa-solid fa-user-tie"></i><div class="stat-data"><h4>10+</h4><p>Vanyagurus</p></div></div>
+        <div class="stat-box"><i class="fa-solid fa-trophy"></i><div class="stat-data"><h4>5+</h4><p>Activities</p></div></div>
+        <div class="stat-box"><i class="fa-solid fa-face-smile"></i><div class="stat-data"><h4>98%</h4><p>Satisfaction</p></div></div>
+        <div class="stat-box"><i class="fa-solid fa-award"></i><div class="stat-data"><h4>5+</h4><p>Years Open</p></div></div>
+    </div>
+
+    <!-- TRI-COLUMN MEDIA MATRIX INFO PIPELINE -->
+    <section class="section-container">
+        <div class="tri-column-grid">
+            <!-- News Panel -->
+            <div>
+                <h3 class="column-header">News & Events</h3>
+                <div class="news-item">
+                    <div class="date-badge"><span class="day">20</span><span class="month">May</span></div>
+                    <div class="news-details"><h5>Annual Sports Meet</h5><p>A spectacular showcase of athletic supremacy and speed.</p><a href="#">Read More →</a></div>
+                </div>
+                <div class="news-item">
+                    <div class="date-badge"><span class="day">08</span><span class="month">May</span></div>
+                    <div class="news-details"><h5>Science Exhibition</h5><p>Young innovators unveil functional sustainable prototype arrays.</p><a href="#">Read More →</a></div>
+                </div>
+                <div class="btn-center-wrapper"><a href="#" class="btn-sm-outline">View All News</a></div>
+            </div>
+
+            <!-- Gallery Panel -->
+            <div>
+                <h3 class="column-header">Gallery Portfolio</h3>
+                <div class="gallery-container">
+                    <div class="gallery-tile" style="background-image: url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=250&q=80')"></div>
+                    <div class="gallery-tile" style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=250&q=80')"></div>
+                    <div class="gallery-tile" style="background-image: url('football.jpeg')"></div>
+                    <div class="gallery-tile" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=250&q=80')"></div>
+                </div>
+                <div class="btn-center-wrapper"><a href="#" class="btn-sm-outline">Open Gallery</a></div>
+            </div>
+
+            <!-- Upcoming Events Panel -->
+            <div>
+                <h3 class="column-header">Upcoming Tracks</h3>
+                <div class="news-item">
+                    <div class="date-badge"><span class="day">05</span><span class="month">Jun</span></div>
+                    <div class="news-details"><h5>World Environment Day</h5><p>Plantation initiatives across local forest reserves.</p></div>
+                </div>
+                <div class="news-item">
+                    <div class="date-badge"><span class="day">21</span><span class="month">Jun</span></div>
+                    <div class="news-details"><h5>International Yoga Day</h5><p>Comprehensive sunrise meditation and health sync assemblies.</p></div>
+                </div>
+                <div class="btn-center-wrapper"><a href="#" class="btn-sm-outline">Full Schedule</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM INTEGRATED FOOTER SYSTEM -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h4>VANYAKSHETRA</h4>
+                <p class="motto">Where Nature Inspires Excellence</p>
+                <p class="desc">Constructing future forward standard pathways seamlessly through timeless environmental frameworks.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Academics</a></li>
+                    <li><a href="#">Admissions Hub</a></li>
+                    <li><a href="#">Campus Lifestyle</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <div class="footer-contact-item"><i class="fa-solid fa-location-dot"></i><span>Vanyakshetra Campus<br>Vanyakshetra Road, Lakhimpur,<br>Assam - 787001</span></div>
+                <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><span>vanyakshetra@gmail.com</span></div>
+            </div>
+            <div class="footer-subscribe">
+                <h4>Stay Connected</h4>
+                <div class="input-group">
+                    <input type="email" placeholder="vanyakshetra@gmail.com">
+                    <button type="button"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 VanyakShetra. All Rights Reserved.</p>
+            <p>Designed with <i class="fa-solid fa-heart" style="color:var(--gold)"></i> in Nature</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE MEDIA HANDLER SCRIPT -->
+    <script>
+        function injectCampusMedia() {
+            // Replace with your real, actual YouTube Video ID string
+            const targetVideoId = 'dQw4w9WgXcQ'; 
+            const interactiveContainer = document.getElementById('video-root');
+            
+            // Swap out the thumbnail cleanly for an interactive auto-playing fluid iframe
+            interactiveContainer.innerHTML = `
+                <iframe src="https://www.youtube.com/embed/${targetVideoId}?autoplay=1&rel=0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;">
+                </iframe>`;
+        }
+    </script>
+</body>
+</html>
